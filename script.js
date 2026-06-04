@@ -172,6 +172,81 @@ function handleResponsive() {
 window.addEventListener('resize', handleResponsive);
 window.addEventListener('load', handleResponsive);
 
+// Salon Classic cart and active category state
+document.addEventListener('DOMContentLoaded', function() {
+    const salonCart = new Map();
+    const cartTitle = document.querySelector('.salon-cart-card h3');
+    const cartLines = document.querySelector('.salon-cart-lines');
+    const cartTotal = document.querySelector('.salon-cart-total');
+    const cartTotalValue = document.querySelector('.salon-cart-total strong');
+
+    function formatSalonPrice(value) {
+        return '₹' + value.toLocaleString('en-IN');
+    }
+
+    function renderSalonCart() {
+        if (!cartTitle || !cartLines || !cartTotal || !cartTotalValue) return;
+
+        cartLines.innerHTML = '';
+        let total = 0;
+
+        salonCart.forEach(function(item) {
+            total += item.price * item.quantity;
+            const line = document.createElement('div');
+            line.className = 'salon-cart-line';
+            line.innerHTML = '<span>' + item.name + ' × ' + item.quantity + '</span><strong>' + formatSalonPrice(item.price * item.quantity) + '</strong>';
+            cartLines.appendChild(line);
+        });
+
+        if (salonCart.size === 0) {
+            cartTitle.textContent = 'No items in your cart';
+            cartTotal.classList.add('hidden');
+            cartTotalValue.textContent = '₹0';
+            return;
+        }
+
+        cartTitle.textContent = salonCart.size + ' item' + (salonCart.size > 1 ? 's' : '') + ' in your cart';
+        cartTotal.classList.remove('hidden');
+        cartTotalValue.textContent = formatSalonPrice(total);
+    }
+
+    document.querySelectorAll('.salon-add-btn').forEach(function(button) {
+        button.addEventListener('click', function() {
+            const name = button.dataset.name;
+            const price = Number(button.dataset.price);
+            const existing = salonCart.get(name) || { name: name, price: price, quantity: 0 };
+            existing.quantity += 1;
+            salonCart.set(name, existing);
+            button.classList.add('added');
+            button.textContent = 'Added';
+            renderSalonCart();
+        });
+    });
+
+    const categoryLinks = Array.from(document.querySelectorAll('.salon-category'));
+    const sections = categoryLinks
+        .map(function(link) { return document.querySelector(link.getAttribute('href')); })
+        .filter(Boolean);
+
+    if ('IntersectionObserver' in window && sections.length > 0) {
+        const observer = new IntersectionObserver(function(entries) {
+            const visible = entries
+                .filter(function(entry) { return entry.isIntersecting; })
+                .sort(function(a, b) { return b.intersectionRatio - a.intersectionRatio; })[0];
+
+            if (!visible) return;
+
+            categoryLinks.forEach(function(link) {
+                link.classList.toggle('active', link.getAttribute('href') === '#' + visible.target.id);
+            });
+        }, { rootMargin: '-30% 0px -55% 0px', threshold: [0.1, 0.3, 0.6] });
+
+        sections.forEach(function(section) {
+            observer.observe(section);
+        });
+    }
+});
+
 // Add active class to current nav item
 document.addEventListener('DOMContentLoaded', function() {
     const navLinks = document.querySelectorAll('.nav-menu a');
