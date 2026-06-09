@@ -274,7 +274,7 @@ if(placeOrderBtn){
             total;
 
         window.open(
-            "https://wa.me/91YOURNUMBER?text=" +
+            "https://wa.me/917898140600?text=" +
             message,
             "_blank"
         );
