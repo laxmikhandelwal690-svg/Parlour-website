@@ -242,12 +242,14 @@ if(placeOrderBtn){
 
         const phone =
             document.getElementById("customerPhone").value;
+        
+        const address =
+            document.getElementById("customerAddress").value;
 
-        if(!name || !phone){
-            alert("Please enter name and phone number");
-            return;
-        }
-
+        if(!name || !phone || !address){
+    alert("Please enter name, phone number and address");
+    return;
+}
         let message =
             "🌸 NEW SALON ORDER 🌸%0A%0A";
 
@@ -257,6 +259,9 @@ if(placeOrderBtn){
         message +=
             "Phone: " + phone + "%0A%0A";
 
+        message +=
+            "Address: " + address + "%0A%0A";
+        
         let total = 0;
 
         salonCart.forEach(function(item){
