@@ -269,12 +269,25 @@
             </div>
 
             <aside class="salon-right-rail" aria-label="Salon cart and promise">
-                <section class="salon-cart-card">
-                    <i class="fas fa-cart-shopping" aria-hidden="true"></i>
-                    <h3>No items in your cart</h3>
-                    <div class="salon-cart-lines" aria-live="polite"></div>
-                    <div class="salon-cart-total hidden"><span>Total</span><strong>₹0</strong></div>
-                </section>
+               <section class="salon-cart-card">
+    <i class="fas fa-cart-shopping"></i>
+    <h3>No items in your cart</h3>
+
+    <div class="salon-cart-lines"></div>
+
+    <div class="salon-cart-total hidden">
+        <span>Total</span>
+        <strong>₹0</strong>
+    </div>
+
+    <input type="text" id="customerName" placeholder="Enter Name">
+
+    <input type="tel" id="customerPhone" placeholder="Enter Phone Number">
+
+    <button id="placeOrderBtn" class="salon-order-btn">
+        Place Order
+    </button>
+</section>
                 <section class="salon-promise-card">
                     <div>
                         <h3>Glow Promise</h3>
