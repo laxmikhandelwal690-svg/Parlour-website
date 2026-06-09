@@ -194,8 +194,14 @@ document.addEventListener('DOMContentLoaded', function() {
             total += item.price * item.quantity;
             const line = document.createElement('div');
             line.className = 'salon-cart-line';
-            line.innerHTML = '<span>' + item.name + ' × ' + item.quantity + '</span><strong>' + formatSalonPrice(item.price * item.quantity) + '</strong>';
+           line.innerHTML = '<span>' + item.name + ' x ' + item.quantity + '</span>' + '<strong>' + formatSalonPrice(item.price * item.quantity) + '</strong>' + '<button class="remove-item" data-name="' + item.name + '">❌</button>';
             cartLines.appendChild(line);
+            const removeBtn = line.querySelector('.remove-item');
+
+removeBtn.addEventListener('click', function () {
+    salonCart.delete(item.name);
+    renderSalonCart();
+});
         });
 
         if (salonCart.size === 0) {
