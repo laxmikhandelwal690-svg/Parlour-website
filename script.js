@@ -220,6 +220,66 @@ document.addEventListener('DOMContentLoaded', function() {
             button.classList.add('added');
             button.textContent = 'Added';
             renderSalonCart();
+            const placeOrderBtn = document.getElementById("placeOrderBtn");
+
+if(placeOrderBtn){
+
+    placeOrderBtn.addEventListener("click", function(){
+
+        if(salonCart.size === 0){
+            alert("Cart is empty");
+            return;
+        }
+
+        const name =
+            document.getElementById("customerName").value;
+
+        const phone =
+            document.getElementById("customerPhone").value;
+
+        if(!name || !phone){
+            alert("Please enter name and phone number");
+            return;
+        }
+
+        let message =
+            "🌸 NEW SALON ORDER 🌸%0A%0A";
+
+        message +=
+            "Name: " + name + "%0A";
+
+        message +=
+            "Phone: " + phone + "%0A%0A";
+
+        let total = 0;
+
+        salonCart.forEach(function(item){
+
+            const subtotal =
+                item.price * item.quantity;
+
+            total += subtotal;
+
+            message +=
+                item.name +
+                " x " +
+                item.quantity +
+                " = ₹" +
+                subtotal +
+                "%0A";
+        });
+
+        message +=
+            "%0A💰 Total: ₹" +
+            total;
+
+        window.open(
+            "https://wa.me/91YOURNUMBER?text=" +
+            message,
+            "_blank"
+        );
+    });
+}
         });
     });
 
