@@ -217,82 +217,98 @@ removeBtn.addEventListener('click', function () {
     }
 
     document.querySelectorAll('.salon-add-btn').forEach(function(button) {
-        button.addEventListener('click', function() {
-            const name = button.dataset.name;
-            const price = Number(button.dataset.price);
-            const existing = salonCart.get(name) || { name: name, price: price, quantity: 0 };
-            existing.quantity += 1;
-            salonCart.set(name, existing);
-            button.classList.add('added');
-            button.textContent = 'Added';
-            renderSalonCart();
-            const placeOrderBtn = document.getElementById("placeOrderBtn");
+
+```
+button.addEventListener('click', function() {
+
+    const name = button.dataset.name;
+    const price = Number(button.dataset.price);
+
+    const existing =
+        salonCart.get(name) ||
+        { name: name, price: price, quantity: 0 };
+
+    existing.quantity += 1;
+
+    salonCart.set(name, existing);
+
+    button.classList.add('added');
+    button.textContent = 'Added';
+
+    renderSalonCart();
+
+});
+```
+
+});
+
+const placeOrderBtn = document.getElementById("placeOrderBtn");
 
 if(placeOrderBtn){
 
-    placeOrderBtn.addEventListener("click", function(){
+```
+placeOrderBtn.addEventListener("click", function(){
 
-        if(salonCart.size === 0){
-            alert("Cart is empty");
-            return;
-        }
+    if(salonCart.size === 0){
+        alert("Cart is empty");
+        return;
+    }
 
-        const name =
-            document.getElementById("customerName").value;
+    const name =
+        document.getElementById("customerName").value;
 
-        const phone =
-            document.getElementById("customerPhone").value;
-        
-        const address =
-            document.getElementById("customerAddress").value;
+    const phone =
+        document.getElementById("customerPhone").value;
 
-        if(!name || !phone || !address){
-    alert("Please enter name, phone number and address");
-    return;
-}
-        let message =
-            "🌸 NEW SALON ORDER 🌸%0A%0A";
+    const address =
+        document.getElementById("customerAddress").value;
 
-        message +=
-            "Name: " + name + "%0A";
+    if(!name || !phone || !address){
+        alert("Please enter Name, Phone and Address");
+        return;
+    }
 
-        message +=
-            "Phone: " + phone + "%0A%0A";
+    let message =
+        "🌸 NEW SALON ORDER 🌸%0A%0A";
 
-        message +=
-            "Address: " + address + "%0A%0A";
-        
-        let total = 0;
+    message += "Name: " + name + "%0A";
+    message += "Phone: " + phone + "%0A";
+    message += "Address: " + address + "%0A%0A";
 
-        salonCart.forEach(function(item){
+    let total = 0;
 
-            const subtotal =
-                item.price * item.quantity;
+    salonCart.forEach(function(item){
 
-            total += subtotal;
+        const subtotal =
+            item.price * item.quantity;
 
-            message +=
-                item.name +
-                " x " +
-                item.quantity +
-                " = ₹" +
-                subtotal +
-                "%0A";
-        });
+        total += subtotal;
 
         message +=
-            "%0A💰 Total: ₹" +
-            total;
+            item.name +
+            " x " +
+            item.quantity +
+            " = ₹" +
+            subtotal +
+            "%0A";
 
-        window.open(
-            "https://wa.me/917898140600?text=" +
-            message,
-            "_blank"
-        );
     });
+
+    message +=
+        "%0A💰 Total: ₹" +
+        total;
+
+    window.open(
+        "https://wa.me/917898140600?text=" +
+        encodeURIComponent(message),
+        "_blank"
+    );
+
+});
+```
+
 }
-        });
-    });
+
 
     const categoryLinks = Array.from(document.querySelectorAll('.salon-category'));
     const sections = categoryLinks
