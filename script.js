@@ -237,7 +237,6 @@ button.addEventListener('click', function() {
     renderSalonCart();
 
 });
-```
 
 });
 
@@ -245,7 +244,6 @@ const placeOrderBtn = document.getElementById("placeOrderBtn");
 
 if(placeOrderBtn){
 
-```
 placeOrderBtn.addEventListener("click", function(){
 
     if(salonCart.size === 0){
@@ -304,7 +302,7 @@ placeOrderBtn.addEventListener("click", function(){
     );
 
 });
-```
+
 
 }
 
