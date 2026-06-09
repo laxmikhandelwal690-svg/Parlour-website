@@ -218,7 +218,6 @@ removeBtn.addEventListener('click', function () {
 
     document.querySelectorAll('.salon-add-btn').forEach(function(button) {
 
-```
 button.addEventListener('click', function() {
 
     const name = button.dataset.name;
