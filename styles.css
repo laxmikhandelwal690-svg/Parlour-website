@@ -1908,4 +1908,85 @@ textarea {
 }
 
 }
+.special-notice-board{
+background:linear-gradient(135deg,#ff0000,#ff4d4d);
+color:white;
+padding:20px;
+margin:20px 0;
+border-radius:15px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:20px;
+flex-wrap:wrap;
+box-shadow:0 8px 25px rgba(255,0,0,0.35);
+animation:pulseNotice 2s infinite;
+}
+
+.special-notice-text{
+flex:1;
+font-size:18px;
+font-weight:600;
+line-height:1.6;
+}
+
+.special-notice-buttons{
+display:flex;
+gap:12px;
+}
+
+.special-whatsapp-btn,
+.special-instagram-btn{
+text-decoration:none;
+padding:12px 22px;
+border-radius:30px;
+font-weight:700;
+transition:.3s;
+}
+
+.special-whatsapp-btn{
+background:#25D366;
+color:white;
+}
+
+.special-instagram-btn{
+background:white;
+color:#E1306C;
+}
+
+.special-whatsapp-btn:hover,
+.special-instagram-btn:hover{
+transform:translateY(-3px) scale(1.05);
+}
+
+@keyframes pulseNotice{
+0%{
+box-shadow:0 0 10px rgba(255,0,0,.3);
+}
+50%{
+box-shadow:0 0 30px rgba(255,0,0,.6);
+}
+100%{
+box-shadow:0 0 10px rgba(255,0,0,.3);
+}
+}
+
+@media(max-width:768px){
+.special-notice-board{
+text-align:center;
+}
+
+```
+.special-notice-buttons{
+    width:100%;
+    justify-content:center;
+}
+
+.special-notice-text{
+    font-size:15px;
+}
+```
+
+}
+
 }
