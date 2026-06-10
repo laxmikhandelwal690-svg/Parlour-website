@@ -1861,71 +1861,51 @@ textarea {
     .salon-rating {
         font-size: 1.05rem;
     }
-   .notice-board{
-    background: linear-gradient(90deg,#ff4f81,#ff6fa3);
+  .notice-board{
+    background:linear-gradient(135deg,#ff4f81,#ff6fa3);
     color:white;
     padding:15px 25px;
     display:flex;
     justify-content:space-between;
     align-items:center;
-    flex-wrap:wrap;
     gap:15px;
-    box-shadow:0 4px 15px rgba(255,79,129,0.4);
-    border-bottom:4px solid #fff;
+    flex-wrap:wrap;
+    box-shadow:0 4px 20px rgba(255,79,129,.4);
 }
 
-.notice-message{
-    font-size:16px;
-    font-weight:600;
+.notice-content{
+    display:flex;
+    align-items:center;
+    gap:12px;
     flex:1;
 }
 
-.notice-actions{
-    display:flex;
-    gap:10px;
+.notice-icon{
+    font-size:24px;
 }
 
-.notice-whatsapp,
-.notice-instagram{
-    text-decoration:none;
-    padding:10px 18px;
-    border-radius:25px;
-    font-weight:bold;
-    transition:0.3s;
+.notice-text{
+    font-size:15px;
+    font-weight:600;
 }
 
 .notice-whatsapp{
     background:#25D366;
     color:white;
+    padding:10px 18px;
+    border-radius:25px;
+    text-decoration:none;
+    font-weight:bold;
 }
 
 .notice-instagram{
     background:white;
     color:#E1306C;
+    padding:10px 18px;
+    border-radius:25px;
+    text-decoration:none;
+    font-weight:bold;
 }
-
-.notice-whatsapp:hover,
-.notice-instagram:hover{
-    transform:scale(1.05);
-}
-
-@media(max-width:768px){
-
-    .notice-board{
-        text-align:center;
-        justify-content:center;
-    }
-
-    .notice-actions{
-        width:100%;
-        justify-content:center;
-    }
-
-    .notice-message{
-        font-size:14px;
-    }
-}
-```
 
 }
 }
