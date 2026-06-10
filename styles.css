@@ -771,7 +771,9 @@ textarea {
 
 .salon-layout {
     display: grid;
-    grid-template-columns: minmax(280px, 360px) minmax(460px, 1fr) minmax(280px, 360px);
+    grid-template-columns: minmax(270px, 320px) minmax(0, 1fr) minmax(270px, 320px);
+    max-width: 1440px;
+    margin: 0 auto;
     padding: 0 clamp(1rem, 4vw, 4rem);
 }
 
@@ -780,8 +782,10 @@ textarea {
     top: 92px;
     align-self: start;
     max-height: calc(100vh - 112px);
+    width: 100%;
     margin-top: 2.4rem;
-    overflow: auto;
+    overflow-x: hidden;
+    overflow-y: auto;
     border: 1px solid #e4e4e7;
     border-radius: 12px;
     background: var(--white);
@@ -807,8 +811,8 @@ textarea {
 
 .salon-category-grid {
     display: grid;
-    grid-template-columns: repeat(3, minmax(76px, 1fr));
-    gap: 1.5rem 1rem;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.35rem 0.8rem;
     padding: 1.2rem 1.2rem 1.6rem;
 }
 
@@ -816,14 +820,17 @@ textarea {
     display: grid;
     justify-items: center;
     gap: 0.6rem;
+    min-width: 0;
     color: #111111;
+    font-size: 0.95rem;
     text-align: center;
     text-decoration: none;
     line-height: 1.2;
+    overflow-wrap: anywhere;
 }
 
 .salon-category img {
-    width: 76px;
+    width: min(100%, 86px);
     aspect-ratio: 1;
     object-fit: cover;
     border-radius: 10px;
@@ -842,6 +849,7 @@ textarea {
 }
 
 .salon-catalog {
+    min-width: 0;
     padding: 3.8rem clamp(1.4rem, 4vw, 4rem);
     border-left: 1px solid #e4e4e7;
     border-right: 1px solid #e4e4e7;
@@ -873,6 +881,39 @@ textarea {
 
 .salon-service + .salon-service {
     margin-top: 2rem;
+}
+
+.salon-services {
+    display: grid;
+    gap: 1.2rem;
+}
+
+.salon-service-card {
+    display: grid;
+    grid-template-columns: 128px minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    border: 1px solid #e4e4e7;
+    border-radius: 10px;
+    background: var(--white);
+}
+
+.salon-service-card > img {
+    width: 128px;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.salon-service-info {
+    min-width: 0;
+}
+
+.salon-service-info h3 {
+    margin-bottom: 0.35rem;
+    font-size: 1.2rem;
+    line-height: 1.2;
 }
 
 .salon-service.with-photo {
@@ -1741,7 +1782,12 @@ textarea {
         grid-template-columns: 1fr;
     }
 
-    .salon-service.with-photo > img {
+    .salon-service-card {
+        grid-template-columns: 1fr;
+    }
+
+    .salon-service.with-photo > img,
+    .salon-service-card > img {
         width: 100%;
         max-height: 190px;
     }
@@ -1976,7 +2022,6 @@ box-shadow:0 0 10px rgba(255,0,0,.3);
 text-align:center;
 }
 
-```
 .special-notice-buttons{
     width:100%;
     justify-content:center;
@@ -1984,9 +2029,6 @@ text-align:center;
 
 .special-notice-text{
     font-size:15px;
-}
-```
-
 }
 
 }
