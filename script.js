@@ -296,7 +296,7 @@ placeOrderBtn.addEventListener("click", function(){
         total;
 
     window.open(
-        "https://wa.me/919104731000?text=" +
+        "https://wa.me/917489284535?text=" +
         encodeURIComponent(message),
         "_blank"
     );
