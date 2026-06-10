@@ -330,6 +330,29 @@ placeOrderBtn.addEventListener("click", function(){
         });
     }
 });
+document.getElementById("contactForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const message = document.getElementById("message").value;
+
+    const whatsappMessage =
+`🌸 New Contact Form Message
+
+👤 Name: ${name}
+📧 Email: ${email}
+
+💬 Message:
+${message}`;
+
+    const phoneNumber = "917489284535";
+
+    const whatsappURL =
+    `https://wa.me/${phoneNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+
+    window.open(whatsappURL, "_blank");
+});
 
 // Add active class to current nav item
 document.addEventListener('DOMContentLoaded', function() {
