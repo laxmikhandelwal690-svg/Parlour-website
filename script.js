@@ -353,7 +353,21 @@ ${message}`;
 
     window.open(whatsappURL, "_blank");
 });
+const slides = document.querySelectorAll('.brand-slide');
+let currentSlide = 0;
 
+function showSlide() {
+    slides.forEach(slide => slide.classList.remove('active'));
+
+    currentSlide++;
+    if(currentSlide >= slides.length){
+        currentSlide = 0;
+    }
+
+    slides[currentSlide].classList.add('active');
+}
+
+setInterval(showSlide, 8000);
 // Add active class to current nav item
 document.addEventListener('DOMContentLoaded', function() {
     const navLinks = document.querySelectorAll('.nav-menu a');
