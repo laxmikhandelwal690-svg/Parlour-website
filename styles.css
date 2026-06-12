@@ -1805,7 +1805,61 @@ textarea {
         grid-template-columns: 1fr;
     }
 }
+/* Partners Section */
 
+.partners-section{
+    padding:70px 20px;
+    text-align:center;
+    background:linear-gradient(135deg,#fff5f8,#ffe4ec);
+}
+
+.partners-section h2{
+    font-size:2.2rem;
+    color:#d63384;
+    margin-bottom:10px;
+}
+
+.partners-section p{
+    color:#666;
+    margin-bottom:40px;
+}
+
+.partners-slider{
+    overflow:hidden;
+    position:relative;
+    width:100%;
+}
+
+.partners-track{
+    display:flex;
+    align-items:center;
+    gap:60px;
+    width:max-content;
+    animation: slidePartners 8s linear infinite;
+}
+
+.partners-track img{
+    height:80px;
+    width:auto;
+    background:#fff;
+    padding:15px;
+    border-radius:15px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+    transition:0.3s;
+}
+
+.partners-track img:hover{
+    transform:scale(1.1);
+}
+
+@keyframes slidePartners{
+    from{
+        transform:translateX(100%);
+    }
+    to{
+        transform:translateX(-100%);
+    }
+}
 @media (max-width: 520px) {
     .nav-wrapper {
         padding: 0.75rem 0;
