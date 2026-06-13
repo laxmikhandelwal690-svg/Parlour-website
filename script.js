@@ -353,20 +353,26 @@ ${message}`;
 
     window.open(whatsappURL, "_blank");
 });
-const slides = document.querySelectorAll('.brand-slide');
-let currentSlide = 0;
+const brandSlides =
+document.querySelectorAll(".brand-slide");
 
-function showSlide() {
-    slides.forEach(slide => slide.classList.remove('active'));
+let currentBrand = 0;
 
-    currentSlide++;
-    if(currentSlide >= slides.length){
-        currentSlide = 0;
-    }
+setInterval(() => {
 
-    slides[currentSlide].classList.add('active');
+brandSlides[currentBrand]
+.classList.remove("active");
+
+currentBrand++;
+
+if(currentBrand >= brandSlides.length){
+currentBrand = 0;
 }
 
+brandSlides[currentBrand]
+.classList.add("active");
+
+},10000);
 setInterval(showSlide, 8000);
 // Add active class to current nav item
 document.addEventListener('DOMContentLoaded', function() {
